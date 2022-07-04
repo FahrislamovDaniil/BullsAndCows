@@ -1,4 +1,4 @@
-package com.practice.bullsandcows.utils;
+package com.practice.bullsandcows.services;
 
 import com.practice.bullsandcows.dtos.GameDto;
 import com.practice.bullsandcows.dtos.PlayerDto;
@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DtoMappingUtils {
+public class DtoMappingService {
     private final GameRepo gameRepo;
 
     @Autowired
-    public DtoMappingUtils(GameRepo gameRepo) {
+    public DtoMappingService(GameRepo gameRepo) {
         this.gameRepo = gameRepo;
     }
 

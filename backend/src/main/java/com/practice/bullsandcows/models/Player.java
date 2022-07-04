@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Player implements Serializable {
+public class Player extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     @Column(unique = true, nullable = false)
     private String nickname;
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     private List<Game> games;
 
     public Player() {

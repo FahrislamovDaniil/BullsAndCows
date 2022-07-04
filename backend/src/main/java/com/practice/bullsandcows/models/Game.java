@@ -6,12 +6,12 @@ import java.sql.Time;
 import java.util.List;
 
 @Entity
-public class Game implements Serializable {
+public class Game extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "player_id", nullable = false)
     private Player player;
     @Column(nullable = false)
@@ -24,7 +24,7 @@ public class Game implements Serializable {
     private Time timeRestrict;
     @Column(nullable = false)
     private boolean finished;
-    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     private List<Turn> turns;
 
     public Game() {

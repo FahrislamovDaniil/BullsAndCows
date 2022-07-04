@@ -5,12 +5,12 @@ import java.io.Serializable;
 import java.sql.Time;
 
 @Entity
-public class Turn implements Serializable {
+public class Turn extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
     @Column(nullable = false)
